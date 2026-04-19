@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aku Masih Sayang...</title>
+
+<style>
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: monospace;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* HUJAN */
+.rain {
+  position: fixed;
+  width: 2px;
+  height: 100px;
+  background: rgba(255,255,255,0.2);
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+/* TEKS */
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h1 {
+  font-size: 30px;
+  animation: fade 3s infinite alternate;
+}
+
+p {
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+@keyframes fade {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+/* efek glitch */
+.glitch {
+  position: relative;
+  color: white;
+  font-size: 28px;
+}
+
+.glitch::before,
+.glitch::after {
+  content: "Aku masih sayang kamu...";
+  position: absolute;
+  left: 0;
+}
+
+.glitch::before {
+  color: red;
+  animation: glitch 1s infinite;
+}
+
+.glitch::after {
+  color: blue;
+  animation: glitch 1.5s infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px,2px); }
+  40% { transform: translate(-2px,-2px); }
+  60% { transform: translate(2px,2px); }
+  80% { transform: translate(2px,-2px); }
+  100% { transform: translate(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1 class="glitch">Aku masih sayang kamu...</h1>
+  <p>
+    Kenapa harus berakhir?<br>
+    Padahal aku udah berusaha sekuat mungkin...<br><br>
+    
+    Sekarang aku cuma bisa diam,<br>
+    nahan semua rasa yang masih ada.<br><br>
+
+    Kamu mungkin udah bahagia...<br>
+    Tapi aku masih di sini,<br>
+    nunggu sesuatu yang gak akan kembali 💔        By Dilxz 🤓
+  </p>
+</div>
+
+<!-- MUSIK SAD -->
+<audio autoplay loop>
+  <source src="https://files.catbox.moe/6b7q6l.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// buat hujan
+for (let i = 0; i < 100; i++) {
+  let rain = document.createElement("div");
+  rain.classList.add("rain");
+  rain.style.left = Math.random() * window.innerWidth + "px";
+  rain.style.animationDuration = (Math.random() * 1 + 0.5) + "s";
+  rain.style.opacity = Math.random();
+  document.body.appendChild(rain);
+}
+</script>
+
+</body>
+</html>
